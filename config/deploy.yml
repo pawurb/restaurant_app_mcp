@@ -1,0 +1,63 @@
+service: restaurant-app-mcp
+image: pawurb/restaurant-app-mcp
+
+servers:
+  web:
+    - mcp
+
+proxy:
+  ssl: true
+  hosts: 
+    - pg-extras-mcp-test.apki.io
+  app_port: 3000
+
+registry:
+  username: pawurb
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+env:
+  secret:
+    - RAILS_MASTER_KEY
+    - DATABASE_URL
+    - PG_EXTRAS_MCP_AUTH_TOKEN
+    - RAILS_PG_EXTRAS_MCP_DATABASE_URL
+  clear:
+    HOST: https://pg-extras-mcp-test.apki.io
+    PORT: 3000
+    DB_HOST: restaurant-app-mcp-postgres
+    RAILS_ENV: production
+    RAILS_PG_EXTRAS_PUBLIC_DASHBOARD: true
+    PG_EXTRAS_MCP_EXPLAIN_ENABLED: true
+    PG_EXTRAS_MCP_EXPLAIN_ANALYZE_ENABLED: true
+
+accessories:
+  postgres:
+    image: postgres:17.2-alpine
+    host: mcp
+    port: "127.0.0.1:5432:5432"
+    env:
+      clear:
+        POSTGRES_USER: restaurant_app_mcp
+        POSTGRES_DB: restaurant_app_mcp_pg
+        POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD_PRODUCTION'] %>
+    cmd: >
+      postgres
+      -c shared_preload_libraries=pg_stat_statements
+      -c pg_stat_statements.track=all
+      -c statement_timeout=10000
+    files:
+      - config/init.sql:/docker-entrypoint-initdb.d/setup.sql
+    directories:
+      - data:/var/lib/postgresql/data
+ssh:
+  user: root
+
+builder:
+  arch: amd64
+
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"

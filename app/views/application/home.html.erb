@@ -1,0 +1,112 @@
+<div class="config-container">
+  <h1>pg-extras MCP Test</h1>
+  
+  <div class="config-section">
+    <p><strong>endpoint:</strong> https://pg-extras-mcp-test.apki.io/pg_extras_mcp/sse</p>
+    <p><strong>token:</strong> <%= ENV["PG_EXTRAS_MCP_AUTH_TOKEN"] %></p>
+  </div>
+  
+  <div class="config-section">
+    <h2>sample config:</h2>
+    <pre><code>{
+  "mcpServers": {
+    "pg-extras": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://pg-extras-mcp-test.apki.io/pg_extras_mcp/sse",
+        "--header",
+        "Authorization: mcpsecret"
+      ]
+    }
+  }
+}</code></pre>
+  </div>
+  
+  <div class="config-section">
+    <p><a href="/pg_extras" class="dashboard-link">PgExtras dashboard</a></p>
+    <p><a href="https://github.com/pawurb/restaurant_app_mcp" class="dashboard-link" target="_blank">GitHub Repository</a></p>
+  </div>
+</div>
+
+<style>
+  .config-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  h2 {
+    color: #555;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .config-section {
+    margin-bottom: 2rem;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  
+  strong {
+    color: #2c3e50;
+  }
+  
+  pre {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+  }
+  
+  code {
+    color: #d63384;
+    font-size: 0.9rem;
+  }
+  
+  .dashboard-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    display: inline-block;
+    transition: all 0.2s ease;
+  }
+  
+  .dashboard-link:hover {
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .copyright-footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid #dee2e6;
+    text-align: center;
+    color: #666;
+    font-size: 0.85rem;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    background: linear-gradient(to bottom, transparent, #fafbfc);
+  }
+</style>
+
+<div class="copyright-footer">
+  © 2025 Paweł Urbanek. Licensed under the <a target="_blank" href="https://raw.githubusercontent.com/pawurb/restaurant_app_mcp/refs/heads/main/LICENSE.txt?token=GHSAT0AAAAAADHXNARAQ5HFX5EPPFI2RDE22D6V35Q" style="color: #007bff; text-decoration: none; font-weight: 500;">MIT License</a>.
+</div> 
