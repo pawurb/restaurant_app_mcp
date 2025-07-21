@@ -21,7 +21,6 @@ env:
     - RAILS_MASTER_KEY
     - DATABASE_URL
     - PG_EXTRAS_MCP_AUTH_TOKEN
-    - RAILS_PG_EXTRAS_MCP_DATABASE_URL
   clear:
     HOST: https://pg-extras-mcp-test.apki.io
     PORT: 3000
