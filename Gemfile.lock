@@ -254,7 +254,13 @@ GEM
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
-    pg (1.5.9)
+    pg (1.6.1)
+    pg (1.6.1-aarch64-linux)
+    pg (1.6.1-aarch64-linux-musl)
+    pg (1.6.1-arm64-darwin)
+    pg (1.6.1-x86_64-darwin)
+    pg (1.6.1-x86_64-linux)
+    pg (1.6.1-x86_64-linux-musl)
     pg_query (6.1.0)
       google-protobuf (>= 3.25.3)
     pp (0.6.2)
@@ -447,7 +453,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
-  pg (~> 1.1)
+  pg (~> 1.6)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)
